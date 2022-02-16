@@ -118,7 +118,7 @@ class WooCartItems {
         images!.add(new WooCartImages.fromJson(v));
       });
     }
-    price = json['price'];
+    price = json['prices']['price'];
     linePrice = json['line_price'];
     variation = json['variation'].cast<String>();
   }
