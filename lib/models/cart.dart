@@ -59,7 +59,7 @@ class WooCart {
       });
     }
     needsShipping = json['needs_shipping'];
-    totalPrice = json['totals']['line_total'].toString();
+    totalPrice = json['totals']['total_items'].toString();
     line_total_tax = json['totals']['line_total_tax'].toString();
     totalWeight = json['total_weight'];
   }
