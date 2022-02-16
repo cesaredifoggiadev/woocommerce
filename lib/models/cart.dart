@@ -38,6 +38,7 @@ class WooCart {
   bool? needsShipping;
   String? totalPrice;
   int? totalWeight;
+  String? line_total_tax;
 
   WooCart(
       {this.currency,
@@ -45,11 +46,12 @@ class WooCart {
       this.items,
       this.needsShipping,
       this.totalPrice,
+      this.line_total_tax,
       this.totalWeight});
 
   WooCart.fromJson(Map<String, dynamic> json) {
-    currency = json['currency'];
-    itemCount = json['item_count'];
+    currency = json['totals']['currency_code'];
+    itemCount = json['items_count'];
     if (json['items'] != null) {
       items = <WooCartItems>[];
       json['items'].forEach((v) {
@@ -57,7 +59,8 @@ class WooCart {
       });
     }
     needsShipping = json['needs_shipping'];
-    totalPrice = 'ciao';
+    totalPrice = json['totals']['line_total'].toString();
+    line_total_tax = json['totals']['line_total_tax'].toString();
     totalWeight = json['total_weight'];
   }
 
