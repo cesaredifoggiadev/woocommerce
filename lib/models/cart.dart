@@ -60,7 +60,7 @@ class WooCart {
     }
     needsShipping = json['needs_shipping'];
     totalPrice = json['totals']['total_items'].toString();
-    line_total_tax = json['totals']['line_total_tax'].toString();
+    line_total_tax = json['totals']['total_items_tax'].toString();
     totalWeight = json['total_weight'];
   }
 
