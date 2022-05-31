@@ -42,6 +42,7 @@ class WooCartItem {
   String? price;
   String? linePrice;
   List<String>? variation;
+  int? maximum;
 
   WooCartItem(
       {this.key,
@@ -53,7 +54,8 @@ class WooCartItem {
       this.images,
       this.price,
       this.linePrice,
-      this.variation});
+      this.variation,
+      this.maximum});
 
   WooCartItem.fromJson(Map<String, dynamic> json) {
     key = json['key'];
@@ -61,6 +63,7 @@ class WooCartItem {
     quantity = json['quantity'];
     name = json['name'];
     sku = json['sku'];
+    maximum = json['quantity_limits']['maximum'];
     permalink = json['permalink'];
     if (json['images'] != null) {
       images = <WooCartItemImages>[];
@@ -81,6 +84,7 @@ class WooCartItem {
     data['name'] = this.name;
     data['sku'] = this.sku;
     data['permalink'] = this.permalink;
+    data['maximum'] = this.maximum;
     if (this.images != null) {
       data['images'] = this.images!.map((v) => v.toJson()).toList();
     }
